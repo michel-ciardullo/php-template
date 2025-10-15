@@ -1,0 +1,16 @@
+{
+    "name": "themonsterdev/php-template",
+    "autoload": {
+        "psr-4": {
+            "PhpTemplate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "themonsterdev",
+            "email": "themonsterdev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
