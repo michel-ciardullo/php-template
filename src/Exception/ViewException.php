@@ -1,5 +1,5 @@
 <?php
 
-namespace PhpTemplate\Exception;
+namespace App\Exception;
 
 class ViewException extends \Exception {}

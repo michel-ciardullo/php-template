@@ -2,7 +2,7 @@
     "name": "themonsterdev/php-template",
     "autoload": {
         "psr-4": {
-            "PhpTemplate\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [

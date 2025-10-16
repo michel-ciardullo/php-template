@@ -10,7 +10,18 @@
         <?= $this->yield('head', $args); ?>
     </head>
     <body>
-        <?= $this->yield('content', $args); ?>
+        <?= $this->render('partials.navbar') ?>
+
+        <main>
+            <?= $this->yield('content', $args); ?>
+        </main>
+
         <?= $this->yield('footer', $args); ?>
+
+        <footer>
+            <p>&copy; 2025 - Company</p>
+            <?= $this->yield('footer', $args); ?>
+            <?= $this->stack('scripts', $args); ?>
+        </footer>
     </body>
 </html>

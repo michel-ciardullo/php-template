@@ -10,7 +10,18 @@
         @yield('head')
     </head>
     <body>
-        @yield('content')
+        @include('partials.navbar')
+
+        <main>
+            @yield('content')
+        </main>
+
         @yield('footer')
+
+        <footer>
+            <p>&copy; 2025 - Company</p>
+            @yield('footer')
+            @stack('scripts')
+        </footer>
     </body>
 </html>

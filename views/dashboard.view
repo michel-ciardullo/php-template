@@ -1,0 +1,17 @@
+@extend('layouts.default')
+
+@inject('user', 'App\\User')
+
+@section('title')
+    Dashboard
+@endsection
+
+@section('content')
+    <h2>Bienvenue {{ $user->getName() }} !</h2>
+
+    <ul>
+        @foreach($items as $item)
+            <li>{{ $item }}</li>
+        @endforeach
+    </ul>
+@endsection

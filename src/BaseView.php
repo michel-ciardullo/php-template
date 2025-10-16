@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpTemplate;
+namespace App;
 
 class BaseView {
 
@@ -61,7 +61,7 @@ class BaseView {
             '<?php $this->section($1, function($args) { extract($args); ?>',
             '<?= $this->yield($1, $args); ?>',
             '<?php $1($2): ?>',
-            '<?= $this->output($1) ?>',
+            '<?= $this->render($1) ?>',
             '<?= json_encode($1); ?>',
             '<?= $this->stack($1, $args); ?>',
             '<?php $this->push($1, function($args) { extract($args); ?>',
@@ -119,8 +119,10 @@ class BaseView {
      * @param array $args
      * @return string
      */
-    public function render(string $path, array $args = []): string {
-        foreach ($args as $i => $v) {
+    public function render(string $path, array $args = []): string
+    {
+        foreach ($args as $i => $v)
+        {
             $this->addGlobal($i, $v);
         }
 
@@ -133,7 +135,8 @@ class BaseView {
         $this->content = str_replace($this->str_replace[0], $this->str_replace[1], $this->content);
 
         # get et add tag filter
-        foreach ($this->filters as $key => $value) {
+        foreach ($this->filters as $key => $value)
+        {
             $this->content = preg_replace_callback(
                 "~@filter\(\'(.*?)\', (.*?)\)~",
                 function ($matches) use($key, $value) {
@@ -147,7 +150,8 @@ class BaseView {
         }
 
         # get et add tag function
-        foreach ($this->functions as $key => $value) {
+        foreach ($this->functions as $key => $value)
+        {
             $this->content = preg_replace(
                 "~@({$key})\(([^()]*+(?:\((?-1)\)[^()]*)*+)\)~",
                 '<?= $$1($2); ?>',
@@ -156,7 +160,8 @@ class BaseView {
         }
 
         # get et add tag component
-        foreach ($this->components as $key => $value) {
+        foreach ($this->components as $key => $value)
+        {
             $this->content = preg_replace_callback(
                 "~@component\(\'(.*?)\', (.*?)\)~",
                 function ($matches) use($key, $value) {
@@ -189,7 +194,8 @@ class BaseView {
 
         include($storage);
         $_content = ob_get_clean();
-        if (!is_null($_layout)) {
+        if (!is_null($_layout))
+        {
             return $this->render($_layout, $args);
         }
 
@@ -256,19 +262,23 @@ class BaseView {
      */
     public function addExtension(ViewExtension $extension)
     {
-        foreach ($extension->getGlobals() as $key => $value) {
+        foreach ($extension->getGlobals() as $key => $value)
+        {
             $this->addGlobal($key, $value);
         }
 
-        foreach ($extension->getFunctions() as $key => $value) {
+        foreach ($extension->getFunctions() as $key => $value)
+        {
             $this->addFunction($key, $value);
         }
 
-        foreach ($extension->getFilters() as $key => $value) {
+        foreach ($extension->getFilters() as $key => $value)
+        {
             $this->addFilter($key, $value);
         }
 
-        foreach ($extension->getComponents() as $key => $value) {
+        foreach ($extension->getComponents() as $key => $value)
+        {
             $this->addComponent($key, $value);
         }
     }
@@ -308,9 +318,11 @@ class BaseView {
      */
     public function stack(string $name, $args)
     {
-        if (array_key_exists($name, $this->stacks)) {
+        if (array_key_exists($name, $this->stacks))
+        {
             $push = null;
-            foreach ($this->stacks[$name] as $stacks) {
+            foreach ($this->stacks[$name] as $stacks)
+            {
                 $variables = $this->stacks[$name] + $this->globals + $this->functions + $this->filters + $args;
                 $push .= call_user_func($stacks, $variables);
             }

@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpTemplate;
+namespace App;
 
 class ViewExtension {
 
@@ -17,7 +17,9 @@ class ViewExtension {
      */
     public function getFunctions(): array
     {
-        return [];
+        return [
+            'currentYear' => fn() => date('Y')
+        ];
     }
 
     /**
@@ -25,7 +27,9 @@ class ViewExtension {
      */
     public function getFilters(): array
     {
-        return [];
+        return [
+            'uppercase' => fn($str) => strtoupper($str)
+        ];
     }
 
     /**

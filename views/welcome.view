@@ -1,13 +1,14 @@
 @extend('layouts.default')
 
-@section('head')
-    <title>Home | The Monster [Dev]</title>
+@section('title')
+    Bienvenue
 @endsection
 
 @section('content')
-    <h2>Hello World</h2>
-@endsection
+    <h1>👋 Hello World!</h1>
+    <p>Bienvenue sur le moteur de template <strong>php-template</strong>.</p>
 
-@section('footer')
-
+    @push('scripts')
+        <script>console.log('Script depuis welcome.view');</script>
+    @endpush
 @endsection
