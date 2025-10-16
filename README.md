@@ -10,7 +10,7 @@ Il permet d’organiser et de séparer la logique de présentation dans vos appl
 1. **Cloner le dépôt :**
 
 ```bash
-git clone https://github.com/ton-utilisateur/php-template.git
+git clone https://github.com/michel-ciardullo/php-template.git
 cd php-template
 ```
 
